@@ -1,4 +1,4 @@
-
+<p ><%= @alert %></p>
 <%= form_for @url, :url => {:controller => "home", :action => "create"} do |f| %>
 
   <% if @url.errors.any? %>
@@ -15,10 +15,11 @@
 
   <div class="field">
     <%= f.label :url_original %><br>
+    <p>ex: https://edition.cnn.com </p>
     <%= f.text_area :originalurl ,{:class => 'form-control'} %>
   </div>  <br>
   <div class="field">
-    <p><%=  @geturl %></p>
+    <p><%=  @geturl %>ccn.com</p> 
     <%= f.label :url_new %><br>
     <%= f.text_field :newurl ,{:class => 'form-control'}%>
   </div>

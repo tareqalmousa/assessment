@@ -1,9 +1,10 @@
 require "#{Rails.root}/app/operation_models/url_service.rb"
 class HomeController < ApplicationController
-    $instance=Urloperation.new
   
+  $instance=Urloperation.new
+  $notice="" 
   def index
-    
+   @alert=$notice
    @geturl=request.original_url
    @url = $instance.new_url
     
@@ -15,12 +16,14 @@ class HomeController < ApplicationController
      @url= $instance.create(url_params)
      
       if(@url=="taken")
-        
+       $notice='Url taken ..... !'
        redirect_to action: "index"
          
       else if(@url.errors.empty?)
-     
-         redirect_to action: "index"
+        
+         $notice='Url was successfully created.'
+         redirect_to action: "index" 
+       
        else
          render 'index'
        end
